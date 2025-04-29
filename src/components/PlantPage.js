@@ -1,5 +1,5 @@
 import React from "react";
-import NewPlantForm from "./NewPlantForm";
+import NewPlantForm from "./PlantForm";
 import PlantList from "./PlantList";
 import Search from "./Search";
 
