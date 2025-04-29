@@ -1,4 +1,3 @@
-// src/PlantForm.js
 import { useState } from 'react';
 
 function PlantForm({ plants, setPlants }) {
