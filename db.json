@@ -1,28 +1,18 @@
 {
   "plants": [
     {
-      "id": 1,
-      "name": "Aloe",
-      "image": "./images/aloe.jpg",
-      "price": 15.99
-    },
-    {
-      "id": 2,
-      "name": "ZZ Plant",
-      "image": "./images/zz-plant.jpg",
-      "price": 25.98
-    },
-    {
       "id": 3,
       "name": "Pothos",
       "image": "./images/pothos.jpg",
-      "price": 12.50
+      "price": 12.5,
+      "soldOut": false
     },
     {
-      "id": 4,
-      "name": "Snake Plant",
-      "image": "./images/snake-plant.jpg",
-      "price": 18.75
+      "name": "electricity",
+      "image": "https://media.istockphoto.com/id/1167387827/photo/small-plant-growing-with-sunshine-agriculture-concept.jpg?s=612x612&w=0&k=20&c=WZBh2mhQy4Xyp-7Nah0JtfCe6QFeTAhZFDZkky0lnTk=",
+      "price": 7777,
+      "soldOut": false,
+      "id": 6
     }
   ]
 }

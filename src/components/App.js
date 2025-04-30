@@ -3,7 +3,6 @@ import PlantList from './PlantList';
 import NewPlantForm from './PlantForm';
 import Search from './Search';
 
-
 function App() {
   const [plants, setPlants] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -11,30 +10,41 @@ function App() {
   useEffect(() => {
     fetch('http://localhost:6001/plants')
       .then(response => response.json())
-      .then(data => setPlants(data))
+      .then(data => {
+        const plantsWithNumericPrices = data.map(plant => ({
+          ...plant,
+          price: parseFloat(plant.price)
+        }));
+        setPlants(plantsWithNumericPrices);
+      })
       .catch(error => console.error('Error fetching plants:', error));
   }, []);
 
   const addPlant = (plant) => {
     fetch('http://localhost:6001/plants', {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "Application/JSON",
       },
       body: JSON.stringify({
         name: plant.name,
         image: plant.image,
-        price: parseFloat(plant.price) 
-      }),
+        price: plant.price
+      })
     })
-      .then(response => response.json())
-      .then(newPlant => setPlants([...plants, newPlant]));
+    .then(response => response.json())
+    .then(newPlant => {
+      setPlants([...plants, { ...newPlant, price: parseFloat(newPlant.price), soldOut: false }]);
+    });
   };
 
   const toggleSoldOut = (id) => {
-    setPlants(plants.map(plant => 
-      plant.id === id ? { ...plant, soldOut: !plant.soldOut } : plant
-    ));
+    setPlants(plants.map(plant => {
+      if (plant.id === id) {
+        return { ...plant, soldOut: !plant.soldOut };
+      }
+      return plant;
+    }));
   };
 
   const filteredPlants = plants.filter(plant =>
@@ -42,12 +52,10 @@ function App() {
   );
 
   return (
-    <main className="app-container">
-      <h1 className="app-title">Plantsy</h1>
-      <div className="controls-container">
-        <Search searchTerm={searchTerm} onSearchChange={setSearchTerm} />
-        <NewPlantForm onAddPlant={addPlant} />
-      </div>
+    <main>
+      <h1>Plant Shop</h1>
+      <Search searchTerm={searchTerm} onSearchChange={setSearchTerm} />
+      <NewPlantForm onAddPlant={addPlant} />
       <PlantList plants={filteredPlants} onToggleSoldOut={toggleSoldOut} />
     </main>
   );

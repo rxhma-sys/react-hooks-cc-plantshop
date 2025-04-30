@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function PlantForm({ onAddPlant }) {
+function NewPlantForm({ onAddPlant }) {
   const [formData, setFormData] = useState({
     name: '',
     image: '',
@@ -16,11 +16,7 @@ function PlantForm({ onAddPlant }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newPlant = {
-      ...formData,
-      price: parseFloat(formData.price)
-    };
-    onAddPlant(newPlant);
+    onAddPlant(formData);
     setFormData({
       name: '',
       image: '',
@@ -63,4 +59,4 @@ function PlantForm({ onAddPlant }) {
   );
 }
 
-export default PlantForm;
+export default NewPlantForm;
