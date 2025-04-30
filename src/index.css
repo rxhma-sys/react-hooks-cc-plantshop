@@ -1,166 +1,74 @@
-.app {
+.app-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  font-family: 'Arial', sans-serif;
 }
 
-h1 {
-  color: #2e8b57;
+.app-title {
   text-align: center;
-  font-size: 2.5rem;
+  color: #2c3e50;
   margin-bottom: 30px;
 }
-.search {
-  margin: 20px 0;
-  text-align: center;
+
+.controls-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  gap: 20px;
 }
 
-.search input {
-  padding: 10px 15px;
-  width: 300px;
-  border: 2px solid #ddd;
-  border-radius: 25px;
-  font-size: 1rem;
-  outline: none;
-  transition: border-color 0.3s;
-}
-
-.search input:focus {
-  border-color: #2e8b57;
-}
 .plant-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 25px;
-  margin-top: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
 }
 
 .plant-card {
-  border: 1px solid #e0e0e0;
-  border-radius: 12px;
-  padding: 20px;
-  text-align: center;
-  transition: all 0.3s ease;
-  background-color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s;
 }
 
 .plant-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-.plant-card img {
+.plant-image {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 15px;
 }
 
-.plant-card h3 {
-  color: #2e8b57;
-  margin: 10px 0;
-  font-size: 1.3rem;
+.plant-details {
+  padding: 15px;
 }
 
-.price-control {
-  margin: 15px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
+.plant-name {
+  margin: 0 0 10px;
+  color: #2c3e50;
 }
 
-.price-control input {
-  width: 80px;
-  padding: 5px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  text-align: center;
+.plant-price {
+  font-weight: bold;
+  color: #27ae60;
+  margin: 0 0 15px;
 }
 
-.button-group {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-}
-
-button {
-  padding: 8px 15px;
+.stock-button {
+  width: 100%;
+  padding: 8px;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.2s;
 }
-
-button:hover {
-  opacity: 0.9;
-}
-
-.sold-out-btn {
-  background-color: #ff6b6b;
+.in-stock {
+  background-color: #2ecc71;
   color: white;
-}
-
-.delete-btn {
-  background-color: #f8f8f8;
-  color: #ff6b6b;
-  border: 1px solid #ff6b6b !important;
-}
-.plant-card.sold-out {
-  position: relative;
-  opacity: 0.8;
-}
-
-.plant-card.sold-out::after {
-  content: "SOLD OUT";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(255, 0, 0, 0.7);
+}.sold-out {
+  background-color: #e74c3c;
   color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-weight: bold;
-}
-.plant-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  max-width: 400px;
-  margin: 30px auto;
-  padding: 25px;
-  border: 1px solid #e0e0e0;
-  border-radius: 12px;
-  background-color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.plant-form h2 {
-  color: #2e8b57;
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.plant-form input {
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 1rem;
-}
-
-.plant-form button {
-  background-color: #2e8b57;
-  color: white;
-  padding: 12px;
-  font-size: 1rem;
-  margin-top: 10px;
-}
-
-.plant-form button:hover {
-  background-color: #3aa76d;
 }
