@@ -1,4 +1,3 @@
-/* Main App Styles */
 .app {
   max-width: 1200px;
   margin: 0 auto;
@@ -12,8 +11,6 @@ h1 {
   font-size: 2.5rem;
   margin-bottom: 30px;
 }
-
-/* Search Styles */
 .search {
   margin: 20px 0;
   text-align: center;
@@ -32,8 +29,6 @@ h1 {
 .search input:focus {
   border-color: #2e8b57;
 }
-
-/* Plant List Styles */
 .plant-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -115,8 +110,6 @@ button:hover {
   color: #ff6b6b;
   border: 1px solid #ff6b6b !important;
 }
-
-/* Sold Out State */
 .plant-card.sold-out {
   position: relative;
   opacity: 0.8;
@@ -134,8 +127,6 @@ button:hover {
   border-radius: 5px;
   font-weight: bold;
 }
-
-/* Plant Form Styles */
 .plant-form {
   display: flex;
   flex-direction: column;

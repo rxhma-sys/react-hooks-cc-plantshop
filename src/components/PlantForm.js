@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
-function PlantForm({ plants, setPlants }) {
+function PlantForm({ onAddPlant }) {
   const [formData, setFormData] = useState({
     name: '',
     image: '',
@@ -18,55 +18,48 @@ function PlantForm({ plants, setPlants }) {
     e.preventDefault();
     const newPlant = {
       ...formData,
-      price: parseFloat(formData.price),
-      soldOut: false
+      price: parseFloat(formData.price)
     };
-
-    fetch('http://localhost:6001/plants', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(newPlant)
-    })
-      .then(res => res.json())
-      .then(data => {
-        setPlants([...plants, data]);
-        setFormData({ name: '', image: '', price: '' });
-      });
+    onAddPlant(newPlant);
+    setFormData({
+      name: '',
+      image: '',
+      price: ''
+    });
   };
 
   return (
-    <form className="plant-form" onSubmit={handleSubmit}>
-      <h2>Add New Plant</h2>
-      <input
-        type="text"
-        name="name"
-        placeholder="Plant name"
-        value={formData.name}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="text"
-        name="image"
-        placeholder="Image URL"
-        value={formData.image}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="number"
-        name="price"
-        placeholder="Price"
-        value={formData.price}
-        onChange={handleChange}
-        step="0.01"
-        min="0"
-        required
-      />
-      <button type="submit">Add Plant</button>
-    </form>
+    <div className="new-plant-form">
+      <h2>New Plant</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="name"
+          placeholder="Plant name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="text"
+          name="image"
+          placeholder="Image URL"
+          value={formData.image}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="number"
+          name="price"
+          step="0.01"
+          placeholder="Price"
+          value={formData.price}
+          onChange={handleChange}
+          required
+        />
+        <button type="submit">Add Plant</button>
+      </form>
+    </div>
   );
 }
 
