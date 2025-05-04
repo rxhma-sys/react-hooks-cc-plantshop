@@ -1,7 +1,6 @@
 import React from 'react';
 
 function PlantCard({ plant, onToggleSoldOut }) {
-  // Format price to match test expectations
   const formatPrice = (price) => {
     const num = parseFloat(price);
     return num % 1 === 0 ? num.toString() : num.toFixed(2);
